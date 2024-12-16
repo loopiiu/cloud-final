@@ -1,16 +1,19 @@
 FROM python:3.10-slim
 
+# Set the working directory in the container
 WORKDIR /app
 
+# Copy the content of the local directory to /app in the container
 COPY . /app
 
-RUN pip install --upgrade pip
+# Upgrade pip and verify its version
+RUN pip install --upgrade pip && pip --version
 
-RUN pip install --no-cache-dir -r requirements.txt
+# Install dependencies and output the version of installed packages for debugging
+RUN pip install --no-cache-dir -r requirements.txt && pip list
 
-
+# Expose port for the app
 EXPOSE 8080
 
-ENV FLASK_ENV=production
-
-CMD ["gunicorn", "-b", "0.0.0.0:8080", "app:app"]
+# Run the application (if applicable, adjust to your app entry point)
+CMD ["python", "app.py"]
