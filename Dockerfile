@@ -9,8 +9,8 @@ COPY . /app
 # Upgrade pip and verify its version
 RUN pip install --upgrade pip && pip --version
 
-# Install dependencies and output the version of installed packages for debugging
-RUN pip install --no-cache-dir -r requirements.txt && pip list
+# Install dependencies (without pip list) to isolate the error
+RUN pip install --no-cache-dir -r requirements.txt
 
 # Expose port for the app
 EXPOSE 8080
