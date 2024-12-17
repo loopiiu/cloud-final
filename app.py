@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 # Cloud SQL connection
 app.config['SQLALCHEMY_DATABASE_URI'] = (
-    "postgresql+psycopg2://postgres:hello200399@/inventory_db"
+    "postgresql+psycopg2://postgres:password@/inventory_db"
     "?host=/cloudsql/final-cloud-alua:us-central1:instance1"        #instance connection name
 )
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
